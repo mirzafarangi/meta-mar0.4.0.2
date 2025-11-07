@@ -1,4 +1,4 @@
-# Meta-Mar: AI-Integrated Meta-Analysis Platform
+# Meta-Mar: AI-Integrated Platform for Research Synthesis & Meta-Analysis
 
 
 <p align="center">
