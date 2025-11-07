@@ -1,149 +1,244 @@
-# Meta-Mar: AI-Integrated Platform for Research Synthesis & Meta-Analysis
+# Meta-Mar
 
+Free online meta-analysis platform for research and education.
 
-<p align="center">
-  <a href="https://www.meta-mar.com">Launch Meta-Mar v4.0.2</a> •
-  <a href="#features">Features</a> •
-  <a href="#getting-started">Getting Started</a> •
-  <a href="#examples">Examples</a> •
-  <a href="#citation">Citation</a>
-</p>
+**Website:** [https://www.meta-mar.com](https://www.meta-mar.com)
+
+---
 
 ## Overview
 
-Meta-Mar is an open-source statistical platform for conducting meta-analyses, developed for both research and educational purposes. The platform integrates AI assistance to guide users through methodological decisions and interpretation of results.
+Meta-Mar is a web-based meta-analysis platform that integrates statistical analysis with AI assistance. The platform supports comprehensive meta-analytic procedures from basic effect size calculations to advanced heterogeneity assessment and publication bias evaluation. No installation or registration required.
 
-The tool supports a wide range of meta-analytic procedures, from basic effect size calculations to advanced heterogeneity assessment and publication bias evaluation. It is designed for researchers, educators, and students across various fields where evidence synthesis is valuable.
+The platform serves both research and educational purposes, providing an interactive environment where users can explore meta-analytic concepts while conducting analyses. The integrated AI assistant offers context-specific methodological guidance and helps interpret analytical choices.
 
+---
 
+## Core Capabilities
 
-## Features
+### Methodological Flexibility
+Support for various outcome types including continuous data, binary outcomes, correlations, and effect sizes. Implements both fixed-effect and random-effects models with multiple estimators (REML, DL, PM, ML, HS, SJ, HE, EB). Provides different calculation methods for confidence intervals including classic, Hartung-Knapp, and Kenward-Roger adjustments.
 
-### Core Capabilities
-- **Methodological Flexibility**: Support for various outcome types (continuous, binary, correlations, effect size) and multiple model types
-- **Visualization Tools**: Publication-quality forest plots, funnel plots, and other meta-analytic visualizations
-- **Heterogeneity Assessment**: I², τ², and Cochran's Q statistics with subgroup analysis options
-- **Publication Bias Analysis**: Egger's test, trim-and-fill analysis, and fail-safe N calculations
-- **Meta-Regression**: Tools for exploring relationships between study characteristics and effect sizes
-- **AI Assistance**: Interactive chatbot for methodological guidance and AI-powered report generation
+### Statistical Analysis
+- Effect size calculation and pooling
+- Heterogeneity assessment (I², τ², Cochran's Q)
+- Subgroup analysis
+- Meta-regression with continuous and categorical moderators
+- Sensitivity analysis
 
-### Technical Details
-- Built with R Shiny for an interactive web interface
-- Leverages established R meta-analysis packages (meta, metafor, pimeta)
-- Integrates AI capabilities using OpenAI's GPT models
-- Full support for data import/export and result sharing
+### Publication Bias Assessment
+Multiple methods for evaluating publication bias including Egger's test, Begg's test, trim-and-fill analysis, and fail-safe N calculations (Rosenthal, Orwin, Rosenberg methods).
 
-## Getting Started
+### Visualization
+Publication-quality plots including forest plots, funnel plots, Galbraith plots, L'Abbe plots, Baujat plots, and bubble plots for meta-regression. All visualizations support customization for statistical presentation.
 
-### Online Access
-The easiest way to use Meta-Mar is through our hosted version:
-- [Launch Meta-Mar v4.0.2](https://www.meta-mar.com)
+### AI Integration
+Interactive AI chatbot providing methodological guidance, interpretation support, and learning assistance through natural language interaction. Includes AI-powered report generation for comprehensive summaries of meta-analysis results.
 
-### Local Installation
+---
 
-To run Meta-Mar locally:
+## Technical Architecture
 
-1. Clone this repository
+### Frontend
+- **Landing Page:** Python/Flask serving static HTML with minimal JavaScript
+- **Analysis Interface:** R Shiny application providing interactive statistical analysis
+- **Styling:** Custom CSS following academic design principles with consistent typography and color scheme
+
+### Backend
+- **Statistical Engine:** R with `meta`, `metafor`, and `pimeta` packages
+- **AI Integration:** OpenAI API for chatbot and report generation
+- **Data Handling:** Session-based temporary storage with automatic deletion after analysis completion
+
+### Deployment
+- **Web Server:** PythonAnywhere for Flask frontend
+- **Application Server:** shinyapps.io for R Shiny backend
+- **Domain:** Custom domain with SSL/TLS encryption
+
+---
+
+## Project Structure
+
+```
+metamar_web/
+├── python_side/
+│   ├── app.py                          # Flask application
+│   ├── templates/
+│   │   ├── metamar.html                # Landing page
+│   │   ├── documentation_frame.html    # Documentation viewer
+│   │   ├── support_content.html        # Support and survey
+│   │   └── survey_results.html         # Survey statistics
+│   ├── survey_responses.csv            # Survey data storage
+│   └── .env                            # Environment variables
+│
+├── R_Side/
+│   └── metamar0.4.0.2/
+│       ├── app.R                       # Shiny UI and server
+│       ├── global.R                    # Global functions and settings
+│       ├── user_summary.R              # Session management
+│       └── documentation_MetaMar.R     # Documentation content
+│
+└── README.md
+```
+
+---
+
+## Installation and Deployment
+
+### Local Development
+
+**Prerequisites:**
+- Python 3.8+
+- R 4.0+
+- Required R packages: `shiny`, `meta`, `metafor`, `pimeta`, `ggplot2`, `dplyr`, `DT`, `httr`, `jsonlite`
+
+**Flask Frontend:**
 ```bash
-git clone https://github.com/yourusername/meta-mar.git
-cd meta-mar
+cd python_side
+pip install -r requirements.txt
+python app.py
 ```
 
-2. Install required R packages
+**R Shiny Backend:**
 ```r
-install.packages(c("shiny", "meta", "pimeta", "readxl", "ggplot2", "dplyr", 
-                   "metafor", "DT", "httr", "markdown", "jsonlite", 
-                   "promises", "future", "shinyjs"))
-```
-
-3. Run the application
-```r
+# In R console
+setwd("R_Side/metamar0.4.0.2")
 shiny::runApp()
 ```
 
-## Examples
+### Production Deployment
 
-### Basic Meta-Analysis
+**PythonAnywhere (Flask):**
+1. Clone repository to PythonAnywhere
+2. Configure web app to point to `python_side/app.py`
+3. Set environment variables in `.env` file
+4. Reload web app
 
-Here's a simple example of how to perform a meta-analysis using Meta-Mar's underlying code:
-
+**shinyapps.io (R Shiny):**
 ```r
-# Load libraries
-library(meta)
-library(metafor)
-
-# Example data for continuous outcomes
-data <- data.frame(
-  studlab = paste("Study", 1:5),
-  n.e = c(50, 45, 60, 90, 70),
-  mean.e = c(12.5, 13.2, 14.1, 15.0, 13.7),
-  sd.e = c(2.5, 2.8, 3.1, 2.9, 3.0),
-  n.c = c(48, 47, 55, 88, 65),
-  mean.c = c(10.2, 10.8, 11.5, 11.9, 10.5),
-  sd.c = c(2.4, 2.5, 3.0, 3.1, 2.8)
-)
-
-# Run meta-analysis
-ma <- metacont(
-  n.e = data$n.e,
-  mean.e = data$mean.e,
-  sd.e = data$sd.e,
-  n.c = data$n.c,
-  mean.c = data$mean.c,
-  sd.c = data$sd.c,
-  studlab = data$studlab,
-  sm = "SMD",
-  method.smd = "Hedges",
-  method.tau = "REML",
-  method.random.ci = "HK",
-  prediction = TRUE
-)
-
-# Print results
-summary(ma)
-
-# Create forest plot
-forest(ma, 
-       common = FALSE, 
-       random = TRUE,
-       prediction = TRUE,
-       lab.e = "Intervention",
-       lab.c = "Control",
-       comb.random = TRUE,
-       text.random = "Random effects model",
-       text.predict = "Prediction interval")
+library(rsconnect)
+setwd("R_Side/metamar0.4.0.2")
+deployApp()
 ```
 
-For more complex examples and demonstrations, please visit our [documentation](https://meta-mar.shinyapps.io/metamar_llm/).
+---
 
-## Repository Structure
+## Configuration
 
+### Environment Variables
+
+Create `.env` file in `python_side/`:
 ```
-meta-mar/
-├── app.R                  # Main application file
-├── global.R               # Global settings and functions
-├── user_summary.R         # User summary functionality
-├── documentation_MetaMar.R # Documentation content
-├── assets/                # Images and static resources
-├── example_data/          # Example datasets
-└── README.md              # This readme file
+STRIPE_SECRET_KEY=your_stripe_key_here
+ADMIN_PASSWORD=your_admin_password_here
 ```
+
+### R Configuration
+
+API keys and settings configured in `global.R`:
+- OpenAI API key for AI features
+- Session timeout settings
+- Statistical defaults
+
+---
+
+## Data Privacy
+
+Meta-Mar implements strict data privacy measures:
+
+- **User Data:** All uploaded data stored temporarily in session memory only
+- **Automatic Deletion:** Data automatically deleted when browser session ends
+- **No Persistent Storage:** No user data retained on servers
+- **AI Interactions:** Chat conversations not stored permanently
+- **Analytics:** Google Analytics tracks usage patterns only, not user data
+
+See Privacy Policy at [https://www.meta-mar.com](https://www.meta-mar.com) for complete details.
+
+---
+
+## Development Priorities Survey
+
+The platform includes a public survey system for gathering user feedback on development priorities:
+
+- **Survey Submission:** Available in Support tab
+- **Data Storage:** CSV file (`survey_responses.csv`) with append-only writes
+- **Public Results:** Accessible at `/survey-results` with real-time statistics
+- **Persistence:** Survey data survives deployments and server restarts
+
+---
 
 ## Citation
 
-If you use Meta-Mar in your research, please cite it as follows:
+If you use Meta-Mar in your research, please cite:
 
 ```
-Beheshti, A., Chavanon, M. L., & Christiansen, H. (2020). Emotion dysregulation in adults with attention deficit hyperactivity disorder: a meta-analysis. BMC psychiatry, 20, 1-11.
+Beheshti, A., Chavanon, M. L., & Christiansen, H. (2020). 
+Emotion dysregulation in adults with attention deficit hyperactivity disorder: 
+a meta-analysis. BMC psychiatry, 20, 1-11.
 https://www.meta-mar.com
 ```
 
+---
+
+## Contributing
+
+Contributions are welcome. Please ensure all changes maintain the platform's academic style and minimal design principles.
+
+### Code Style
+- Python: PEP 8 compliance
+- R: Tidyverse style guide
+- HTML/CSS: Consistent with existing templates
+- No emoji or decorative elements in user-facing text
+
+### Testing
+- Test all statistical functions with known datasets
+- Verify AI integration functionality
+- Check cross-browser compatibility
+- Validate responsive design
+
+---
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Meta-Mar is provided free for research and educational purposes.
 
-## Contact
+---
 
-Created by - Atriom Circle, Applied Intelligence Practice - For questions or support, please contact: [a.beheshti@posteo.de](mailto:a.beheshti@posteo.de)
+## Support
 
-<!-- Last updated: Wed Jul 23 19:12:51 CEST 2025 -->
+For technical issues or questions:
+- Visit the Support tab at [https://www.meta-mar.com](https://www.meta-mar.com)
+- Review documentation in the Documentation tab
+- Check example datasets in Resources section
+
+---
+
+## Version History
+
+**2025 Update:**
+- Enhanced AI integration with improved chatbot functionality
+- AI-powered report generation
+- Expanded statistical methods and estimators
+- Improved visualization customization
+- Survey system for development priorities
+- Updated privacy policy and cookie consent
+
+**Previous versions:**
+- Initial release (2020)
+- Multiple iterative improvements based on user feedback
+
+---
+
+## Technical Notes
+
+### Statistical Methods
+All statistical procedures implemented using established R packages (`meta`, `metafor`) following current methodological standards. Effect size calculations, heterogeneity statistics, and publication bias tests conform to published guidelines.
+
+### AI Implementation
+AI features use OpenAI's API with custom prompts designed for meta-analysis contexts. The system provides methodological guidance based on statistical best practices and helps users understand analytical outputs.
+
+### Performance
+Session-based architecture ensures fast response times. Statistical calculations performed server-side with results cached during session. Visualizations generated on-demand with customization options.
+
+---
+
+**Last Updated:** January 2025
