@@ -45,7 +45,7 @@ Interactive AI chatbot providing methodological guidance, interpretation support
 - **Styling:** Custom CSS following academic design principles with consistent typography and color scheme
 
 ### Backend
-- **Statistical Engine:** R with `meta`, `metafor`, and `pimeta` packages
+- **Statistical Engine:** R 
 - **AI Integration:** OpenAI API for chatbot and report generation
 - **Data Handling:** Session-based temporary storage with automatic deletion after analysis completion
 
@@ -79,65 +79,6 @@ metamar_web/
 │
 └── README.md
 ```
-
----
-
-## Installation and Deployment
-
-### Local Development
-
-**Prerequisites:**
-- Python 3.8+
-- R 4.0+
-- Required R packages: `shiny`, `meta`, `metafor`, `pimeta`, `ggplot2`, `dplyr`, `DT`, `httr`, `jsonlite`
-
-**Flask Frontend:**
-```bash
-cd python_side
-pip install -r requirements.txt
-python app.py
-```
-
-**R Shiny Backend:**
-```r
-# In R console
-setwd("R_Side/metamar0.4.0.2")
-shiny::runApp()
-```
-
-### Production Deployment
-
-**PythonAnywhere (Flask):**
-1. Clone repository to PythonAnywhere
-2. Configure web app to point to `python_side/app.py`
-3. Set environment variables in `.env` file
-4. Reload web app
-
-**shinyapps.io (R Shiny):**
-```r
-library(rsconnect)
-setwd("R_Side/metamar0.4.0.2")
-deployApp()
-```
-
----
-
-## Configuration
-
-### Environment Variables
-
-Create `.env` file in `python_side/`:
-```
-STRIPE_SECRET_KEY=your_stripe_key_here
-ADMIN_PASSWORD=your_admin_password_here
-```
-
-### R Configuration
-
-API keys and settings configured in `global.R`:
-- OpenAI API key for AI features
-- Session timeout settings
-- Statistical defaults
 
 ---
 
@@ -176,7 +117,7 @@ Emotion dysregulation in adults with attention deficit hyperactivity disorder:
 a meta-analysis. BMC psychiatry, 20, 1-11.
 https://www.meta-mar.com
 ```
-
+The Metar-Mar's article itself is underreview. New citation will be thus informed.
 ---
 
 ## Contributing
@@ -222,23 +163,6 @@ For technical issues or questions:
 - Survey system for development priorities
 - Updated privacy policy and cookie consent
 
-**Previous versions:**
-- Initial release (2020)
-- Multiple iterative improvements based on user feedback
-
 ---
 
-## Technical Notes
-
-### Statistical Methods
-All statistical procedures implemented using established R packages (`meta`, `metafor`) following current methodological standards. Effect size calculations, heterogeneity statistics, and publication bias tests conform to published guidelines.
-
-### AI Implementation
-AI features use OpenAI's API with custom prompts designed for meta-analysis contexts. The system provides methodological guidance based on statistical best practices and helps users understand analytical outputs.
-
-### Performance
-Session-based architecture ensures fast response times. Statistical calculations performed server-side with results cached during session. Visualizations generated on-demand with customization options.
-
----
-
-**Last Updated:** January 2025
+**Last Updated:** November 2025
