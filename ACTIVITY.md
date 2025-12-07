@@ -46,3 +46,6 @@ Implemented efficient meta-parameter tuning using TPE algorithm. Reduced trainin
 ### 2025-12-07 - Update dependencies and ensure compatibility with latest libraries
 Upgraded core ML frameworks to latest stable versions. Resolved deprecation warnings and maintained backward compatibility.
 
+### 2025-12-07 - Enhance API documentation with usage examples and tutorials
+Added comprehensive guide for meta-learning workflows. Included best practices for task distribution design.
+
