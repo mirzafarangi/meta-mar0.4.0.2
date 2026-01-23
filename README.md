@@ -19,7 +19,7 @@ Meta-Mar enables researchers to conduct meta-analyses without programming knowle
 - AI-powered interpretation guidance via GPT-4 integration
 - Publication-quality visualizations
 
-Since 2020, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 320+ peer-reviewed publications.
+Since 2020, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 200+ peer-reviewed publications.
 
 ## Installation
 
