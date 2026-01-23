@@ -136,3 +136,4 @@ Meta-Mar serves two complementary user groups: (1) researchers without programmi
 Development of Meta-Mar was supported by Philipps-Universität Marburg, Department of Psychology. We thank the research community for feedback and feature suggestions that have shaped the platform's evolution since 2020.
 
 # References
+
