@@ -13,7 +13,7 @@ authors:
     orcid: 0000-0002-6377-0710
     affiliation: "1, 2"
     corresponding: true
-    email: a.beheshti@posteo.de
+    email: contact@meta-mar.com
   - name: Hassan Sazmand
     affiliation: 2
   - name: Mira-Lynn Chavanon
@@ -123,7 +123,7 @@ These safeguards ensure responsible deployment in academic and educational envir
 
 # Development Practices and Community
 
-Meta-Mar has been developed openly on GitHub since 2020, with a public commit history spanning six years of iterative refinement. The repository includes:
+Meta-Mar has been in continuous development since 2019, with the current architecture (v4.0) representing a complete rewrite initiated in March 2025. Earlier versions were developed outside public version control; Meta-Mar's prior existence is documented in peer-reviewed literature, including Beheshti et al. (2020) which references Meta-Mar v1.1.0. The repository includes:
 
 - **Documentation:** Comprehensive README, online user guide at meta-mar.com/documentation, and in-app tooltips
 - **Issue tracking:** Public issue tracker for bug reports and feature requests
