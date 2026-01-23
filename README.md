@@ -153,7 +153,7 @@ If you use Meta-Mar in your research, please cite:
 
 ```bibtex
 @software{beheshti2026metamar,
-  author = {Beheshti, Ashkan and Chavanon, Mira-Lynn and Albrecht, Björn and Christiansen, Hanna},
+  author = {Beheshti, Ashkan and Sazmand, Hassan and Chavanon, Mira-Lynn and Christiansen, Hanna},
   title = {Meta-Mar: An AI-Integrated Web Platform for Meta-Analysis},
   year = {2026},
   url = {https://github.com/mirzafarangi/meta-mar},

@@ -9,21 +9,21 @@ tags:
   - AI assistant
 authors:
   - name: Ashkan Beheshti
-    orcid: 0000-0000-0000-0000
-    affiliation: 1
+    orcid: 0000-0002-6377-0710
+    affiliation: "1, 2"
     corresponding: true
+    email: a.beheshti@posteo.de
+  - name: Hassan Sazmand
+    affiliation: 2
   - name: Mira-Lynn Chavanon
-    orcid: 0000-0000-0000-0000
-    affiliation: 1
-  - name: Björn Albrecht
-    orcid: 0000-0000-0000-0000
     affiliation: 1
   - name: Hanna Christiansen
-    orcid: 0000-0000-0000-0000
     affiliation: 1
 affiliations:
   - name: Department of Psychology, Philipps-Universität Marburg, Germany
     index: 1
+  - name: Independent Researcher
+    index: 2
 date: 23 January 2026
 bibliography: paper.bib
 ---

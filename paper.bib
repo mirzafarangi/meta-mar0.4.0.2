@@ -1,3 +1,9 @@
+% ============================================================================
+% Meta-Mar JOSS Paper References
+% ============================================================================
+
+% --- Core R Packages for Meta-Analysis ---
+
 @article{Viechtbauer2010,
   title = {Conducting meta-analyses in {R} with the {metafor} package},
   author = {Viechtbauer, Wolfgang},
@@ -10,7 +16,7 @@
 }
 
 @article{Balduzzi2019,
-  title = {How to perform a meta-analysis with {R}: a practical tutorial},
+  title = {How to perform a meta-analysis with {R}: A practical tutorial},
   author = {Balduzzi, Sara and Rücker, Gerta and Schwarzer, Guido},
   journal = {Evidence-Based Mental Health},
   year = {2019},
@@ -20,25 +26,90 @@
   doi = {10.1136/ebmental-2019-300117}
 }
 
-@book{Borenstein2009,
-  title = {Introduction to Meta-Analysis},
-  author = {Borenstein, Michael and Hedges, Larry V. and Higgins, Julian P. T. and Rothstein, Hannah R.},
-  year = {2009},
-  publisher = {John Wiley \& Sons},
-  address = {Chichester, UK},
-  doi = {10.1002/9780470743386}
+@article{Schwarzer2007,
+  title = {meta: An {R} package for meta-analysis},
+  author = {Schwarzer, Guido},
+  journal = {R News},
+  year = {2007},
+  volume = {7},
+  number = {3},
+  pages = {40--45}
 }
 
-@article{Higgins2003,
-  title = {Measuring inconsistency in meta-analyses},
-  author = {Higgins, Julian P. T. and Thompson, Simon G. and Deeks, Jonathan J. and Altman, Douglas G.},
-  journal = {BMJ},
-  year = {2003},
-  volume = {327},
-  number = {7414},
-  pages = {557--560},
-  doi = {10.1136/bmj.327.7414.557}
+@incollection{Schwarzer2022,
+  title = {Meta-analysis in {R}},
+  author = {Schwarzer, Guido},
+  booktitle = {Systematic Reviews in Health Research: Meta-Analysis in Context},
+  pages = {510--534},
+  year = {2022},
+  publisher = {Wiley}
 }
+
+% --- Foundational Meta-Analysis Texts ---
+
+@book{Borenstein2021,
+  title = {Introduction to Meta-Analysis},
+  author = {Borenstein, Michael and Hedges, Larry V. and Higgins, Julian P. T. and Rothstein, Hannah R.},
+  year = {2021},
+  publisher = {John Wiley \& Sons}
+}
+
+@book{Harrer2021,
+  title = {Doing Meta-Analysis with {R}: A Hands-On Guide},
+  author = {Harrer, Mathias and Cuijpers, Pim and Furukawa, Toshi A. and Ebert, David D.},
+  year = {2021},
+  publisher = {Chapman \& Hall/CRC Press},
+  doi = {10.1201/9781003107347}
+}
+
+@book{Schmid2020,
+  title = {Handbook of Meta-Analysis},
+  author = {Schmid, Christopher H. and Stijnen, Theo and White, Ian},
+  year = {2020},
+  publisher = {CRC Press}
+}
+
+@book{Schmidt2022,
+  title = {Methods of Meta-Analysis: Correcting Error and Bias in Research Findings},
+  author = {Schmidt, Frank L. and Oh, In-Sue and Hayes, Theodore L.},
+  year = {2022},
+  edition = {4th},
+  publisher = {SAGE Publications}
+}
+
+@book{Cumming2012,
+  title = {Understanding the New Statistics: Effect Sizes, Confidence Intervals, and Meta-Analysis},
+  author = {Cumming, Geoff},
+  year = {2012},
+  publisher = {Routledge}
+}
+
+@book{Ellis2010,
+  title = {The Essential Guide to Effect Sizes: Statistical Power, Meta-Analysis, and the Interpretation of Research Results},
+  author = {Ellis, Paul D.},
+  year = {2010},
+  publisher = {Cambridge University Press}
+}
+
+% --- Cochrane Handbooks ---
+
+@book{Higgins2019,
+  title = {Cochrane Handbook for Systematic Reviews of Interventions},
+  author = {Higgins, Julian P. T. and Thomas, James and Chandler, Jacqueline and Cumpston, Miranda and Li, Tianjing and Page, Matthew J. and Welch, Vivian A.},
+  year = {2019},
+  edition = {2nd},
+  publisher = {Wiley-Blackwell},
+  doi = {10.1002/9781119536604}
+}
+
+@book{Deeks2023,
+  title = {Cochrane Handbook for Systematic Reviews of Diagnostic Test Accuracy},
+  author = {Deeks, Jonathan J. and Bossuyt, Patrick M. and Leeflang, Mariska M. and Takwoingi, Yemisi},
+  year = {2023},
+  publisher = {John Wiley \& Sons}
+}
+
+% --- Publication Bias Methods ---
 
 @article{Egger1997,
   title = {Bias in meta-analysis detected by a simple, graphical test},
@@ -52,7 +123,7 @@
 }
 
 @article{DuvalTweedie2000,
-  title = {Trim and fill: a simple funnel-plot-based method of testing and adjusting for publication bias in meta-analysis},
+  title = {Trim and fill: A simple funnel-plot-based method of testing and adjusting for publication bias in meta-analysis},
   author = {Duval, Sue and Tweedie, Richard},
   journal = {Biometrics},
   year = {2000},
@@ -60,6 +131,51 @@
   number = {2},
   pages = {455--463},
   doi = {10.1111/j.0006-341X.2000.00455.x}
+}
+
+@article{Rosenberg2005,
+  title = {The file-drawer problem revisited: A general weighted method for calculating fail-safe numbers in meta-analysis},
+  author = {Rosenberg, Michael S.},
+  journal = {Evolution},
+  year = {2005},
+  volume = {59},
+  number = {2},
+  pages = {464--468},
+  doi = {10.1111/j.0014-3820.2005.tb01004.x}
+}
+
+@article{SterneEgger2001,
+  title = {Funnel plots for detecting bias in meta-analysis: Guidelines on choice of axis},
+  author = {Sterne, Jonathan A. C. and Egger, Matthias},
+  journal = {Journal of Clinical Epidemiology},
+  year = {2001},
+  volume = {54},
+  number = {10},
+  pages = {1046--1055}
+}
+
+@article{VanAert2019,
+  title = {Publication bias examined in meta-analyses from psychology and medicine: A meta-meta-analysis},
+  author = {Van Aert, Robbie C. M. and Wicherts, Jelte M. and Van Assen, Marcel A. L. M.},
+  journal = {PLOS ONE},
+  year = {2019},
+  volume = {14},
+  number = {4},
+  pages = {e0215052},
+  doi = {10.1371/journal.pone.0215052}
+}
+
+% --- Heterogeneity and Statistical Methods ---
+
+@article{Higgins2003,
+  title = {Measuring inconsistency in meta-analyses},
+  author = {Higgins, Julian P. T. and Thompson, Simon G. and Deeks, Jonathan J. and Altman, Douglas G.},
+  journal = {BMJ},
+  year = {2003},
+  volume = {327},
+  number = {7414},
+  pages = {557--560},
+  doi = {10.1136/bmj.327.7414.557}
 }
 
 @article{IntHout2014,
@@ -83,6 +199,456 @@
   doi = {10.1002/jrsm.1164}
 }
 
+@article{Holzmeister2024,
+  title = {Heterogeneity in effect size estimates},
+  author = {Holzmeister, Felix and Johannesson, Magnus and Böhm, Robert and Dreber, Anna and Huber, Jürgen and Kirchler, Michael},
+  journal = {Proceedings of the National Academy of Sciences},
+  year = {2024},
+  volume = {121},
+  number = {32},
+  pages = {e2403490121}
+}
+
+@article{Weber2020,
+  title = {Zero-cell corrections in random-effects meta-analyses},
+  author = {Weber, Frank and Knapp, Guido and Ickstadt, Katja and Kundt, Günther and Glass, Änne},
+  journal = {Research Synthesis Methods},
+  year = {2020},
+  volume = {11},
+  pages = {913--919}
+}
+
+@article{Gucciardi2022,
+  title = {Handling effect size dependency in meta-analysis},
+  author = {Gucciardi, Daniel F. and Lines, Robyn L. and Ntoumanis, Nikos},
+  journal = {International Review of Sport and Exercise Psychology},
+  year = {2022},
+  volume = {15},
+  number = {1},
+  pages = {152--178}
+}
+
+% --- Effect Size Interpretation ---
+
+@article{Glass1976,
+  title = {Primary, secondary, and meta-analysis of research},
+  author = {Glass, Gene V.},
+  journal = {Educational Researcher},
+  year = {1976},
+  volume = {5},
+  number = {10},
+  pages = {3--8},
+  doi = {10.3102/0013189X005010003}
+}
+
+@article{Lakens2013,
+  title = {Calculating and reporting effect sizes to facilitate cumulative science: A practical primer for t-tests and {ANOVAs}},
+  author = {Lakens, Daniël},
+  journal = {Frontiers in Psychology},
+  year = {2013},
+  volume = {4},
+  pages = {863},
+  doi = {10.3389/fpsyg.2013.00863}
+}
+
+@article{Sawilowsky2009,
+  title = {New effect size rules of thumb},
+  author = {Sawilowsky, Shlomo S.},
+  journal = {Journal of Modern Applied Statistical Methods},
+  year = {2009},
+  volume = {8},
+  number = {2},
+  pages = {597--599},
+  doi = {10.22237/jmasm/1257035100}
+}
+
+@article{Lovakov2021,
+  title = {Empirically derived guidelines for effect size interpretation in social psychology},
+  author = {Lovakov, Andrey and Agadullina, Elena R.},
+  journal = {European Journal of Social Psychology},
+  year = {2021},
+  volume = {51},
+  number = {3},
+  pages = {485--504}
+}
+
+@article{Bosco2015,
+  title = {Correlational effect size benchmarks},
+  author = {Bosco, Frank A. and Aguinis, Herman and Singh, Kulraj and Field, James G. and Pierce, Charles A.},
+  journal = {Journal of Applied Psychology},
+  year = {2015},
+  volume = {100},
+  number = {2},
+  pages = {431--449},
+  doi = {10.1037/a0038047}
+}
+
+@article{Durlak2009,
+  title = {How to select, calculate, and interpret effect sizes},
+  author = {Durlak, Joseph A.},
+  journal = {Journal of Pediatric Psychology},
+  year = {2009},
+  volume = {34},
+  number = {9},
+  pages = {917--928},
+  doi = {10.1093/jpepsy/jsp004}
+}
+
+@article{Sullivan2012,
+  title = {Using effect size---or why the p value is not enough},
+  author = {Sullivan, Gail M. and Feinn, Richard},
+  journal = {Journal of Graduate Medical Education},
+  year = {2012},
+  volume = {4},
+  number = {3},
+  pages = {279--282},
+  doi = {10.4300/JGME-D-12-00156.1}
+}
+
+@article{Schafer2019,
+  title = {The meaningfulness of effect sizes in psychological research: Differences between sub-disciplines and the impact of potential biases},
+  author = {Schäfer, Thomas and Schwarz, Marcus A.},
+  journal = {Frontiers in Psychology},
+  year = {2019},
+  volume = {10},
+  pages = {813},
+  doi = {10.3389/fpsyg.2019.00813}
+}
+
+@article{Citrome2014,
+  title = {Quantifying clinical relevance},
+  author = {Citrome, Leslie},
+  journal = {Innovations in Clinical Neuroscience},
+  year = {2014},
+  volume = {11},
+  number = {5--6},
+  pages = {26--30}
+}
+
+@article{Mishra2024,
+  title = {Minimal clinically important difference of scales reported in stroke trials: A review},
+  author = {Mishra, Bharat and Sudheer, Pradeep and Agarwal, Ayush and Nilima, Nilima and Srivastava, M. V. Padma and Vishnu, Venugopalan Y.},
+  journal = {Brain Sciences},
+  year = {2024},
+  volume = {14},
+  number = {1},
+  pages = {80},
+  doi = {10.3390/brainsci14010080}
+}
+
+% --- Research Synthesis and Replication ---
+
+@article{Gurevitch2018,
+  title = {Meta-analysis and the science of research synthesis},
+  author = {Gurevitch, Jessica and Koricheva, Julia and Nakagawa, Shinichi and Stewart, Gavin},
+  journal = {Nature},
+  year = {2018},
+  volume = {555},
+  number = {7695},
+  pages = {175--182},
+  doi = {10.1038/nature25753}
+}
+
+@article{Ioannidis2005,
+  title = {Why most published research findings are false},
+  author = {Ioannidis, John P. A.},
+  journal = {PLoS Medicine},
+  year = {2005},
+  volume = {2},
+  number = {8},
+  pages = {e124},
+  doi = {10.1371/journal.pmed.0020124}
+}
+
+@article{Button2013,
+  title = {Power failure: Why small sample size undermines the reliability of neuroscience},
+  author = {Button, Katherine S. and Ioannidis, John P. A. and Mokrysz, Claire and Nosek, Brian A. and Flint, Jonathan and Robinson, Emma S. J. and Munafò, Marcus R.},
+  journal = {Nature Reviews Neuroscience},
+  year = {2013},
+  volume = {14},
+  number = {5},
+  pages = {365--375},
+  doi = {10.1038/nrn3475}
+}
+
+@article{Stanley2018,
+  title = {What meta-analyses reveal about the replicability of psychological research},
+  author = {Stanley, T. D. and Carter, Evan C. and Doucouliagos, Hristos},
+  journal = {Psychological Bulletin},
+  year = {2018},
+  volume = {144},
+  number = {12},
+  pages = {1325--1346},
+  doi = {10.1037/bul0000169}
+}
+
+% --- PRISMA Guidelines ---
+
+@article{Page2021,
+  title = {The {PRISMA} 2020 statement: An updated guideline for reporting systematic reviews},
+  author = {Page, Matthew J. and McKenzie, Joanne E. and Bossuyt, Patrick M. and Boutron, Isabelle and Hoffmann, Tammy C. and Mulrow, Cynthia D. and Shamseer, Larissa and Tetzlaff, Jennifer M. and Akl, Elie A. and Brennan, Sue E. and Chou, Roger and Glanville, Julie and Grimshaw, Jeremy M. and Hróbjartsson, Asbjørn and Lalu, Manoj M. and Li, Tianjing and Loder, Elizabeth W. and Mayo-Wilson, Evan and McDonald, Steve and McGuinness, Luke A. and Stewart, Lesley A. and Thomas, James and Tricco, Andrea C. and Welch, Vivian A. and Whiting, Penny and Moher, David},
+  journal = {BMJ},
+  year = {2021},
+  volume = {372},
+  pages = {n71},
+  doi = {10.1136/bmj.n71}
+}
+
+@article{Selcuk2019,
+  title = {A guide for systematic reviews: {PRISMA}},
+  author = {Selçuk, Ayşe Aysun},
+  journal = {Turkish Archives of Otorhinolaryngology},
+  year = {2019},
+  volume = {57},
+  number = {1},
+  pages = {57}
+}
+
+@article{Lee2022,
+  title = {{PRISMA} 2020 statement and guidelines for systematic review and meta-analysis articles, and their underlying mathematics: Life Cycle Committee Recommendations},
+  author = {Lee, Seung Won and Koo, Min Jung},
+  journal = {Life Cycle},
+  year = {2022},
+  volume = {2}
+}
+
+% --- Other Meta-Analysis Software ---
+
+@incollection{Fisher2022,
+  title = {Meta-analysis in {Stata}},
+  author = {Fisher, David J. and Zwahlen, Marcel and Egger, Matthias and Higgins, Julian P. T.},
+  booktitle = {Systematic Reviews in Health Research: Meta-Analysis in Context},
+  pages = {481--509},
+  year = {2022},
+  publisher = {Wiley}
+}
+
+@article{Tantry2021,
+  title = {Self-learning software tools for data analysis in meta-analysis},
+  author = {Tantry, Thrivikrama Padur and Karanth, Harish and Shetty, Pavithra K. and Kadam, Dinesh},
+  journal = {Korean Journal of Anesthesiology},
+  year = {2021},
+  volume = {74},
+  number = {5},
+  pages = {459--461}
+}
+
+@article{Bruggemann2022,
+  title = {Comprehensive Meta-Analysis ({CMA}) 3.0: A software review},
+  author = {Brüggemann, Philipp and Rajguru, Kaustubh},
+  year = {2022}
+}
+
+@incollection{Cooke2024,
+  title = {Using jamovi to conduct meta-analyses},
+  author = {Cooke, Richard},
+  booktitle = {Meta-Analysis for Psychologists},
+  pages = {91--98},
+  year = {2024},
+  publisher = {Springer Nature Switzerland}
+}
+
+@misc{Grasman2017,
+  title = {Meta-analysis in {JASP}},
+  author = {Grasman, Raoul},
+  year = {2017}
+}
+
+@article{Bartos2025,
+  title = {Meta-Analysis with {JASP}, Part {I}: Classical Approaches},
+  author = {Bartoš, František and Wagenmakers, Eric-Jan and Viechtbauer, Wolfgang},
+  journal = {arXiv preprint arXiv:2509.09845},
+  year = {2025}
+}
+
+@inproceedings{Umaroglu2018,
+  title = {{metaHUN}: A web tool for meta-analysis},
+  author = {Umaroglu, Mustafa and Ozdemir, Pinar},
+  booktitle = {3rd International and 20th National Biostatistics Congress},
+  year = {2018},
+  address = {Gaziantep, Turkey}
+}
+
+@manual{RevMan2020,
+  title = {Review Manager ({RevMan}) [Computer program]},
+  author = {{The Cochrane Collaboration}},
+  year = {2020},
+  note = {Version 5.4},
+  address = {Copenhagen: The Nordic Cochrane Centre}
+}
+
+% --- AI and LLM References ---
+
+@inproceedings{Bender2021,
+  title = {On the dangers of stochastic parrots: Can language models be too big?},
+  author = {Bender, Emily M. and Gebru, Timnit and McMillan-Major, Angelina and Shmitchell, Shmargaret},
+  booktitle = {Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency},
+  pages = {610--623},
+  year = {2021}
+}
+
+@article{Marcus2020,
+  title = {The next decade in {AI}: Four steps towards robust artificial intelligence},
+  author = {Marcus, Gary},
+  journal = {arXiv preprint arXiv:2002.06177},
+  year = {2020}
+}
+
+@article{Liang2025,
+  title = {Quantifying large language model usage in scientific papers},
+  author = {Liang, Weixin and Zhang, Yaohui and Wu, Zhengxuan and Lepp, Haley and Ji, Wenlong and Zhao, Xuandong and Cao, Hancheng and Liu, Sheng and He, Siyu and Huang, Zhi and others},
+  journal = {Nature Human Behaviour},
+  year = {2025},
+  pages = {1--11}
+}
+
+@article{Mandal2025,
+  title = {Evaluating large language model agents for automation of atomic force microscopy},
+  author = {Mandal, Indrajit and Soni, Jitendra and Zaki, Morten and Smedskjaer, Morten M. and Wondraczek, Katrin and Wondraczek, Lothar and Krishnan, N. M. Anoop},
+  journal = {Nature Communications},
+  year = {2025},
+  volume = {16},
+  number = {1},
+  pages = {9104}
+}
+
+@misc{Mavroudis2024,
+  title = {{LangChain}},
+  author = {Mavroudis, Vasilios},
+  year = {2024},
+  doi = {10.20944/preprints202411.0566.v1}
+}
+
+@article{Zeng2025,
+  title = {An Analyst-Inspector Framework for Evaluating Reproducibility of {LLMs} in Data Science},
+  author = {Zeng, Qiyang and Jin, Chengyu and Wang, Xiangyu and Zheng, Yiwen and Li, Qianxiao},
+  journal = {arXiv preprint arXiv:2502.16395},
+  year = {2025}
+}
+
+% --- Data Privacy and GDPR ---
+
+@article{Bygrave2021,
+  title = {Data protection by design and by default},
+  author = {Bygrave, Lee A.},
+  journal = {Oxford Encyclopedia of European Union Law},
+  year = {2021},
+  publisher = {Oxford University Press}
+}
+
+@misc{GDPR2016,
+  title = {Regulation ({EU}) 2016/679 ({GDPR}) Article 5: Principles relating to processing of personal data},
+  author = {{European Parliament and Council}},
+  year = {2016}
+}
+
+@incollection{vanderSloot2024,
+  title = {Article 4: Principles relating to processing of personal data},
+  author = {van der Sloot, Bart},
+  booktitle = {The EU Law Enforcement Directive (LED): A Commentary},
+  pages = {135--152},
+  year = {2024},
+  publisher = {Oxford University Press}
+}
+
+@article{Gilbert2025,
+  title = {Data and data privacy impact assessments in the context of {AI} research and practice in the {UK}},
+  author = {Gilbert, Fiona J. and Palmer, James and Woznitza, Nick and Nash, Jonathan and Brackstone, Claire and Faria, Luisa and Denniston, Alastair K.},
+  journal = {Frontiers in Health Services},
+  year = {2025},
+  volume = {5},
+  pages = {1525955}
+}
+
+% --- Design Science Research ---
+
+@article{Hevner2004,
+  title = {Design science in information systems research},
+  author = {Hevner, Alan R. and March, Salvatore T. and Park, Jinsoo and Ram, Sudha},
+  journal = {MIS Quarterly},
+  year = {2004},
+  pages = {75--105}
+}
+
+@article{Peffers2007,
+  title = {A design science research methodology for information systems research},
+  author = {Peffers, Ken and Tuunanen, Tuure and Rothenberger, Marcus A. and Chatterjee, Samir},
+  journal = {Journal of Management Information Systems},
+  year = {2007},
+  volume = {24},
+  number = {3},
+  pages = {45--77}
+}
+
+% --- Clinical and Overview Articles ---
+
+@article{Lee2017,
+  title = {An overview of meta-analysis for clinicians},
+  author = {Lee, Yong Hoon},
+  journal = {The Korean Journal of Internal Medicine},
+  year = {2017},
+  volume = {33},
+  number = {2},
+  pages = {277}
+}
+
+@article{Brydges2019,
+  title = {Effect size guidelines, sample size calculations, and statistical power in gerontology},
+  author = {Brydges, Christopher R.},
+  journal = {Innovation in Aging},
+  year = {2019},
+  volume = {3},
+  number = {4},
+  pages = {igz036},
+  doi = {10.1093/geroni/igz036}
+}
+
+@article{McLennan2021,
+  title = {Barriers and facilitating factors for conducting systematic evidence assessments in academic clinical trials},
+  author = {McLennan, Stuart and Nussbaumer-Streit, Barbara and Hemkens, Lars G. and Briel, Matthias},
+  journal = {JAMA Network Open},
+  year = {2021},
+  volume = {4},
+  number = {11},
+  pages = {e2136577}
+}
+
+% --- Data Conversion Methods ---
+
+@article{Wan2014,
+  title = {Estimating the sample mean and standard deviation from the sample size, median, range and/or interquartile range},
+  author = {Wan, Xiang and Wang, Wenqian and Liu, Jiming and Tong, Tiejun},
+  journal = {BMC Medical Research Methodology},
+  year = {2014},
+  volume = {14},
+  number = {1},
+  pages = {1--13}
+}
+
+@article{Tang2013,
+  title = {A statistical method for synthesizing meta-analyses},
+  author = {Tang, Li-Ling and Caudy, Michael and Taxman, Faye},
+  journal = {Computational and Mathematical Methods in Medicine},
+  year = {2013},
+  volume = {2013},
+  number = {1},
+  pages = {732989}
+}
+
+% --- Author's Previous Work ---
+
+@article{Beheshti2020,
+  title = {Emotion dysregulation in adults with attention deficit hyperactivity disorder: A meta-analysis},
+  author = {Beheshti, Ashkan and Chavanon, Mira-Lynn and Christiansen, Hanna},
+  journal = {BMC Psychiatry},
+  year = {2020},
+  volume = {20},
+  number = {1},
+  pages = {1--11}
+}
+
+% --- Software and Tools ---
+
 @software{RCoreTeam2024,
   title = {R: A Language and Environment for Statistical Computing},
   author = {{R Core Team}},
@@ -99,10 +665,21 @@
   url = {https://CRAN.R-project.org/package=shiny}
 }
 
-@manual{RevMan2020,
-  title = {Review Manager ({RevMan}) [Computer program]},
-  author = {{The Cochrane Collaboration}},
-  year = {2020},
-  note = {Version 5.4},
-  address = {Copenhagen: The Nordic Cochrane Centre}
+% --- Additional References ---
+
+@article{Schwarzer2021,
+  title = {Inconsistent results for {Peto} odds ratios in multi-arm studies, network meta-analysis and indirect comparisons},
+  author = {Schwarzer, Guido and Efthimiou, Orestis and Rücker, Gerta},
+  journal = {Research Synthesis Methods},
+  year = {2021},
+  volume = {12},
+  number = {6},
+  pages = {849--854}
+}
+
+@book{Hemmer2025,
+  title = {The Art of Thesis Writing: From Understanding Research to Writing Success},
+  author = {Hemmer, Markus and Fröhlich, Thorsten},
+  year = {2025},
+  doi = {10.61065/nkhnhv50}
 }
