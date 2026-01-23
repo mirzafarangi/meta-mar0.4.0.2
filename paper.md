@@ -30,7 +30,7 @@ bibliography: paper.bib
 
 # Summary
 
-Meta-Mar is a free, web-based meta-analysis platform built with R Shiny that enables researchers to conduct comprehensive meta-analyses without programming knowledge or software installation. The platform uniquely integrates an AI assistant powered by GPT-4 to provide context-aware methodological guidance and result interpretation. Available at https://www.meta-mar.com, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 320+ peer-reviewed publications since its launch in 2020 [@Beheshti2020].
+Meta-Mar is a free, web-based meta-analysis platform built with R Shiny that enables researchers to conduct comprehensive meta-analyses without programming knowledge or software installation. The platform uniquely integrates an AI assistant powered by GPT-4 to provide context-aware methodological guidance and result interpretation. Available at https://www.meta-mar.com, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 200+ peer-reviewed publications since its launch in 2020 [@Beheshti2020].
 
 # Statement of Need
 
