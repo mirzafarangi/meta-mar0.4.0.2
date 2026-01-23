@@ -30,11 +30,11 @@ bibliography: paper.bib
 
 # Summary
 
-Meta-Mar is a free, web-based meta-analysis platform built with R Shiny that enables researchers to conduct comprehensive meta-analyses without programming knowledge or software installation. The platform uniquely integrates an AI assistant powered by GPT-4 to provide context-aware methodological guidance and result interpretation. Available at https://www.meta-mar.com, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 320+ peer-reviewed publications since its launch in 2020 [e.g., @Beheshti2020; @Holzmeister2024; @Mishra2024; @Gilbert2025].
+Meta-Mar is a free, web-based meta-analysis platform built with R Shiny that enables researchers to conduct comprehensive meta-analyses without programming knowledge or software installation. The platform uniquely integrates an AI assistant powered by GPT-4 to provide context-aware methodological guidance and result interpretation. Available at https://www.meta-mar.com, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 320+ peer-reviewed publications since its launch in 2020 [@Beheshti2020].
 
 # Statement of Need
 
-Meta-analysis is essential for evidence synthesis across scientific disciplines, yet existing tools present significant barriers to researchers. Commercial software such as Comprehensive Meta-Analysis requires expensive licenses. Open-source alternatives like the R packages `metafor` [@Viechtbauer2010] and `meta` [@Balduzzi2019] require programming expertise. Existing web-based tools often lack comprehensive statistical options or provide limited methodological guidance for users unfamiliar with meta-analytic procedures.
+Meta-analysis is essential for evidence synthesis across scientific disciplines [@Gurevitch2018], yet existing tools present significant barriers to researchers. Commercial software such as Comprehensive Meta-Analysis requires expensive licenses. Open-source alternatives like the R packages `metafor` [@Viechtbauer2010] and `meta` [@Balduzzi2019] require programming expertise. Existing web-based tools often lack comprehensive statistical options or provide limited methodological guidance for users unfamiliar with meta-analytic procedures.
 
 Meta-Mar addresses this gap by providing:
 
@@ -43,7 +43,7 @@ Meta-Mar addresses this gap by providing:
 - **Multiple estimators:** Eight heterogeneity variance estimators (REML, DL, PM, ML, EB, SJ, HE, HS) and small-sample corrections (Hartung-Knapp, Kenward-Roger)
 - **Publication bias tools:** Funnel plots, Egger's test [@Egger1997], Begg's test, trim-and-fill [@DuvalTweedie2000], and fail-safe N methods
 - **AI-powered guidance:** Context-aware interpretation and methodological recommendations
-- **Privacy-focused design:** No data retention; all uploads deleted after session ends
+- **Privacy-focused design:** No data retention; all uploads deleted after session ends [@Gilbert2025]
 
 # Functionality
 
@@ -52,7 +52,7 @@ Meta-Mar supports the complete meta-analysis workflow through an interactive web
 1. **Data input:** CSV upload or manual entry for continuous outcomes, binary outcomes, correlations, or pre-calculated effect sizes (generic inverse variance)
 2. **Model specification:** Fixed-effect or random-effects models with user-selected heterogeneity estimators and confidence interval methods
 3. **Effect size calculation:** Automatic computation of standardized mean difference (SMD), mean difference (MD), odds ratio (OR), risk ratio (RR), risk difference (RD), or correlation coefficients with Fisher's z transformation
-4. **Heterogeneity assessment:** Q-statistic, I², τ², H², and prediction intervals
+4. **Heterogeneity assessment:** Q-statistic, I², τ², H², and prediction intervals [@Higgins2003; @Holzmeister2024]
 5. **Publication bias analysis:** Visual assessment via funnel plots, statistical tests (Egger's regression, Begg's rank correlation), adjustment methods (trim-and-fill), and sensitivity analysis (Rosenthal, Orwin, and Rosenberg fail-safe N)
 6. **Moderator analysis:** Subgroup analysis for categorical moderators and meta-regression for continuous moderators
 7. **Visualization:** Forest plots, funnel plots, bubble plots, Baujat plots, drapery plots, and radial plots
