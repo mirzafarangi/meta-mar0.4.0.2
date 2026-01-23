@@ -70,6 +70,18 @@ Meta-Mar implements the complete meta-analysis workflow through a modular archit
 
 **Validation.** Computational accuracy was validated against Cochrane RevMan 5.4, demonstrating agreement to four decimal places for effect size estimates, standard errors, confidence intervals, and study weights across standardized mean difference models.
 
+# Design Rationale
+
+The architectural decisions underlying Meta-Mar reflect deliberate trade-offs between statistical power, accessibility, and maintainability:
+
+**Build vs. extend decision.** Rather than implementing meta-analytic algorithms from scratch, Meta-Mar wraps the established `metafor` and `meta` R packages. This choice prioritizes computational reliability over novelty—these packages have been peer-reviewed, widely cited, and validated across thousands of published meta-analyses. Our contribution lies in the accessibility layer and AI integration, not in reinventing statistical methods.
+
+**Web-based vs. desktop architecture.** We chose R Shiny over desktop deployment (like JASP) to eliminate installation barriers. This enables immediate use in institutional environments with restricted software policies and supports the platform's educational mission in classroom settings where setup time is limited.
+
+**AI as guidance, not automation.** The GPT-4 integration was designed as an interpretive assistant rather than an automated analyst. Statistical computations remain deterministic and reproducible through the underlying R packages; the AI layer provides explanatory support without modifying analytical outputs. This separation ensures that research conclusions depend on validated statistical methods, not on LLM outputs.
+
+**Privacy-first data handling.** Session-based data storage with automatic deletion was chosen over persistent user accounts to minimize data governance complexity and align with GDPR principles. This trade-off sacrifices cross-session continuity for stronger privacy guarantees.
+
 # AI Integration
 
 Meta-Mar integrates OpenAI's GPT-4 API through LangChain to provide an optional AI assistant that enhances interpretability without modifying statistical computations. The assistant supports users with:
@@ -81,7 +93,14 @@ Meta-Mar integrates OpenAI's GPT-4 API through LangChain to provide an optional 
 
 The integration employs conversation memory to maintain context across multi-turn interactions, custom prompt templates tailored to meta-analytic workflows, and error handling for invalid inputs or API timeouts. Critically, the AI assistant is designed to support—not replace—researcher judgment. All AI outputs are clearly labeled, statistical computations remain deterministic and reproducible, and users retain full control over analytical decisions.
 
-**AI Usage Disclosure:** The AI assistant is an optional feature that users may enable or disable. During platform development, AI coding assistants (GitHub Copilot, Claude) were used to accelerate development; all generated code was reviewed and validated by the authors. Core statistical implementations rely entirely on the peer-reviewed `metafor` and `meta` R packages without AI modification.
+**AI Usage Disclosure:** The AI assistant is an optional feature that users may enable or disable. During platform development, AI coding assistants were used as follows:
+
+- **Tools used:** GitHub Copilot, Claude 3.5 Sonnet (Anthropic)
+- **Scope of assistance:** Code refactoring, UI component scaffolding, documentation drafting, and test case generation
+- **Where applied:** Shiny UI modules, API integration code, README and documentation text
+- **Human oversight:** All AI-generated outputs were reviewed, edited, and validated by the authors. Core design decisions, statistical implementations, and architectural choices were made entirely by human authors.
+
+Core statistical computations rely entirely on the peer-reviewed `metafor` and `meta` R packages without AI modification. The AI assistant feature within Meta-Mar uses the OpenAI GPT-4 API; this integration was designed and implemented by the authors with AI coding assistance for boilerplate code only.
 
 # Privacy and Governance
 
@@ -95,6 +114,18 @@ Meta-Mar implements privacy-by-design principles aligned with GDPR requirements:
 - No persistent storage of user data or AI interactions
 
 These safeguards ensure responsible deployment in academic and educational environments where data sensitivity is paramount.
+
+# Development Practices and Community
+
+Meta-Mar has been developed openly on GitHub since 2020, with a public commit history spanning six years of iterative refinement. The repository includes:
+
+- **Documentation:** Comprehensive README, online user guide at meta-mar.com/documentation, and in-app tooltips
+- **Issue tracking:** Public issue tracker for bug reports and feature requests
+- **Contribution pathway:** Guidelines for community contributions via pull requests
+- **Versioned releases:** Tagged releases with semantic versioning (current: v4.0.2)
+- **Validation testing:** Computational outputs verified against Cochrane RevMan 5.4 benchmark data
+
+The platform can be tested locally by cloning the repository and running `shiny::runApp()` in R with the required dependencies installed.
 
 # Target Audience
 
