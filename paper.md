@@ -70,13 +70,17 @@ Meta-Mar implements the complete meta-analysis workflow through a modular archit
 
 **Validation.** Computational accuracy was validated against Cochrane RevMan 5.4, demonstrating agreement to four decimal places for effect size estimates, standard errors, confidence intervals, and study weights across standardized mean difference models.
 
-# Design Rationale
+# State of the Field
+
+Meta-analysis software spans commercial, open-source, and web-based solutions, each with distinct trade-offs. Commercial platforms like Comprehensive Meta-Analysis (CMA) and Cochrane's RevMan provide comprehensive functionality but require paid licenses (€65–95/year for students), limiting access in resource-constrained settings. Open-source R packages—particularly `metafor` [@Viechtbauer2010] and `meta` [@Balduzzi2019]—offer robust analytical frameworks but demand programming expertise. Desktop applications like JASP [@Bartos2025] require local installation, which can be problematic in institutional environments with restricted software policies. Web-based alternatives such as metaHUN [@Umaroglu2018] provide browser access but lack customizable pooling methods, prediction intervals, and methodological guidance. No existing tool combines zero-barrier web accessibility, comprehensive statistical methods, and AI-powered interpretive support within a single platform.
+
+# Software Design
 
 The architectural decisions underlying Meta-Mar reflect deliberate trade-offs between statistical power, accessibility, and maintainability:
 
-**Build vs. extend decision.** Rather than implementing meta-analytic algorithms from scratch, Meta-Mar wraps the established `metafor` and `meta` R packages. This choice prioritizes computational reliability over novelty—these packages have been peer-reviewed, widely cited, and validated across thousands of published meta-analyses. Our contribution lies in the accessibility layer and AI integration, not in reinventing statistical methods.
+**Build vs. contribute decision.** Rather than implementing meta-analytic algorithms from scratch or contributing directly to existing packages, Meta-Mar wraps the established `metafor` and `meta` R packages through an accessibility layer. This choice prioritizes computational reliability over novelty—these packages have been peer-reviewed, widely cited, and validated across thousands of published meta-analyses. Contributing directly to these packages would not address the core accessibility gap: users without R programming skills cannot benefit from command-line tools regardless of their statistical sophistication. Our contribution lies in the web interface and AI integration layer, not in reinventing statistical methods.
 
-**Web-based vs. desktop architecture.** We chose R Shiny over desktop deployment (like JASP) to eliminate installation barriers. This enables immediate use in institutional environments with restricted software policies and supports the platform's educational mission in classroom settings where setup time is limited.
+**Web-based vs. desktop architecture.** We chose R Shiny over desktop deployment to eliminate installation barriers. This enables immediate use in institutional environments with restricted software policies and supports the platform's educational mission in classroom settings where setup time is limited.
 
 **AI as guidance, not automation.** The GPT-4 integration was designed as an interpretive assistant rather than an automated analyst. Statistical computations remain deterministic and reproducible through the underlying R packages; the AI layer provides explanatory support without modifying analytical outputs. This separation ensures that research conclusions depend on validated statistical methods, not on LLM outputs.
 
@@ -93,14 +97,16 @@ Meta-Mar integrates OpenAI's GPT-4 API through LangChain to provide an optional 
 
 The integration employs conversation memory to maintain context across multi-turn interactions, custom prompt templates tailored to meta-analytic workflows, and error handling for invalid inputs or API timeouts. Critically, the AI assistant is designed to support—not replace—researcher judgment. All AI outputs are clearly labeled, statistical computations remain deterministic and reproducible, and users retain full control over analytical decisions.
 
-**AI Usage Disclosure:** The AI assistant is an optional feature that users may enable or disable. During platform development, AI coding assistants were used as follows:
+# AI Usage Disclosure
+
+The AI assistant within Meta-Mar is an optional feature that users may enable or disable. During platform development, AI coding assistants were used as follows:
 
 - **Tools used:** GitHub Copilot, Claude 3.5 Sonnet (Anthropic)
 - **Scope of assistance:** Code refactoring, UI component scaffolding, documentation drafting, and test case generation
 - **Where applied:** Shiny UI modules, API integration code, README and documentation text
 - **Human oversight:** All AI-generated outputs were reviewed, edited, and validated by the authors. Core design decisions, statistical implementations, and architectural choices were made entirely by human authors.
 
-Core statistical computations rely entirely on the peer-reviewed `metafor` and `meta` R packages without AI modification. The AI assistant feature within Meta-Mar uses the OpenAI GPT-4 API; this integration was designed and implemented by the authors with AI coding assistance for boilerplate code only.
+Core statistical computations rely entirely on the peer-reviewed `metafor` and `meta` R packages without AI modification. The AI assistant feature uses the OpenAI GPT-4 API; this integration was designed and implemented by the authors with AI coding assistance for boilerplate code only. This paper was drafted by the authors with AI assistance for grammar and structure review.
 
 # Privacy and Governance
 
@@ -127,9 +133,16 @@ Meta-Mar has been developed openly on GitHub since 2020, with a public commit hi
 
 The platform can be tested locally by cloning the repository and running `shiny::runApp()` in R with the required dependencies installed.
 
-# Target Audience
+# Research Impact Statement
 
-Meta-Mar serves two complementary user groups: (1) researchers without programming expertise who require accessible tools for conducting methodologically sound meta-analyses, and (2) technically trained users who may lack formal training in meta-analytic methodology and benefit from AI-driven guidance on model selection and interpretation. The platform has been adopted in graduate-level meta-analysis courses, including PhD programs at Semmelweis University, demonstrating its utility as both a research and pedagogical tool.
+Meta-Mar demonstrates realized research impact through multiple indicators:
+
+- **User adoption:** Over 5,800 researchers across 120+ countries have used the platform since its 2020 launch
+- **Citation evidence:** 200+ peer-reviewed publications have cited Meta-Mar as their meta-analysis tool
+- **Educational integration:** Adopted in graduate-level meta-analysis courses, including PhD programs at Semmelweis University (Budapest), demonstrating utility as both a research and pedagogical tool
+- **Computational validation:** Results verified against Cochrane RevMan 5.4 to four decimal places for effect estimates, standard errors, and confidence intervals
+
+Meta-Mar serves two complementary user groups: (1) researchers without programming expertise who require accessible tools for conducting methodologically sound meta-analyses, and (2) technically trained users who may lack formal training in meta-analytic methodology and benefit from AI-driven guidance on model selection and interpretation.
 
 # Acknowledgements
 
