@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![R](https://img.shields.io/badge/R-%3E%3D4.0-blue)](https://www.r-project.org/)
 [![Shiny](https://img.shields.io/badge/Shiny-1.7+-green)](https://shiny.rstudio.com/)
+[![JOSS](https://img.shields.io/badge/JOSS-under%20review-yellow)](https://joss.theoj.org/)
 
 A free, web-based meta-analysis platform built with R Shiny, integrating comprehensive statistical methods with AI-powered methodological guidance.
 
@@ -123,6 +124,7 @@ meta-mar/
 │   └── statistics.json
 ├── paper.md           # JOSS paper
 ├── paper.bib          # References
+├── CONTRIBUTING.md    # Contribution guidelines
 ├── LICENSE            # MIT License
 └── README.md
 ```
@@ -147,7 +149,7 @@ Computational accuracy has been validated against Cochrane RevMan 5.4. See the a
 - No persistent storage of user data
 - AI interactions not permanently stored
 
-Full privacy policy: [https://www.meta-mar.com/privacy](https://www.meta-mar.com)
+Full privacy policy: [https://www.meta-mar.com/privacy](https://www.meta-mar.com/privacy)
 
 ## Citation
 
