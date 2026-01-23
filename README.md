@@ -179,7 +179,7 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 - **Website:** [https://www.meta-mar.com](https://www.meta-mar.com)
 - **Issues:** [GitHub Issues](https://github.com/mirzafarangi/meta-mar/issues)
-- **Author:** Ashkan Beheshti, Philipps-Universität Marburg
+- **Corresponding Author:** Ashkan Beheshti (a.beheshti@posteo.de)
 
 ## Acknowledgments
 
