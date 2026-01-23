@@ -1,168 +1,186 @@
 # Meta-Mar
 
-Free online meta-analysis platform for research and education.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![R](https://img.shields.io/badge/R-%3E%3D4.0-blue)](https://www.r-project.org/)
+[![Shiny](https://img.shields.io/badge/Shiny-1.7+-green)](https://shiny.rstudio.com/)
 
-**Website:** [https://www.meta-mar.com](https://www.meta-mar.com)
+A free, web-based meta-analysis platform built with R Shiny, integrating comprehensive statistical methods with AI-powered methodological guidance.
 
----
+**Live Application:** [https://www.meta-mar.com](https://www.meta-mar.com)
 
-## Overview
+## Summary
 
-Meta-Mar is a web-based meta-analysis platform that integrates statistical analysis with AI assistance. The platform supports comprehensive meta-analytic procedures from basic effect size calculations to advanced heterogeneity assessment and publication bias evaluation. No installation or registration required.
+Meta-Mar enables researchers to conduct meta-analyses without programming knowledge or software installation. The platform provides:
 
-The platform serves both research and educational purposes, providing an interactive environment where users can explore meta-analytic concepts while conducting analyses. The integrated AI assistant offers context-specific methodological guidance and helps interpret analytical choices.
+- Support for continuous, binary, correlation, and pre-calculated effect size data
+- Fixed-effect and random-effects models with 8 heterogeneity estimators
+- Publication bias assessment (funnel plots, Egger's test, trim-and-fill, fail-safe N)
+- Subgroup analysis and meta-regression
+- AI-powered interpretation guidance via GPT-4 integration
+- Publication-quality visualizations
 
----
+Since 2020, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 320+ peer-reviewed publications.
 
-## Core Capabilities
+## Installation
 
-### Methodological Flexibility
-Support for various outcome types including continuous data, binary outcomes, correlations, and effect sizes. Implements both fixed-effect and random-effects models with multiple estimators (REML, DL, PM, ML, HS, SJ, HE, EB). Provides different calculation methods for confidence intervals including classic, Hartung-Knapp, and Kenward-Roger adjustments.
+### Requirements
 
-### Statistical Analysis
-- Effect size calculation and pooling
-- Heterogeneity assessment (I², τ², Cochran's Q)
-- Subgroup analysis
-- Meta-regression with continuous and categorical moderators
-- Sensitivity analysis
+- R >= 4.0.0
+- RStudio (recommended for local development)
 
-### Publication Bias Assessment
-Multiple methods for evaluating publication bias including Egger's test, Begg's test, trim-and-fill analysis, and fail-safe N calculations (Rosenthal, Orwin, Rosenberg methods).
+### Dependencies
 
-### Visualization
-Publication-quality plots including forest plots, funnel plots, Galbraith plots, L'Abbe plots, Baujat plots, and bubble plots for meta-regression. All visualizations support customization for statistical presentation.
+```r
+install.packages(c(
+  "shiny",
+  "metafor",
+  "meta",
+  "ggplot2",
+  "dplyr",
+  "DT",
+  "shinythemes",
+  "shinyjs",
+  "httr",
+  "jsonlite"
+))
+```
 
-### AI Integration
-Interactive AI chatbot providing methodological guidance, interpretation support, and learning assistance through natural language interaction. Includes AI-powered report generation for comprehensive summaries of meta-analysis results.
+### Running Locally
 
----
+```bash
+git clone https://github.com/mirzafarangi/meta-mar.git
+cd meta-mar
+```
 
-## Technical Architecture
+```r
+shiny::runApp()
+```
 
-### Frontend
-- **Landing Page:** Python/Flask serving static HTML with minimal JavaScript
-- **Analysis Interface:** R Shiny application providing interactive statistical analysis
-- **Styling:** Custom CSS following academic design principles with consistent typography and color scheme
+The application will open in your default browser at `http://127.0.0.1:xxxx`.
 
-### Backend
-- **Statistical Engine:** R 
-- **AI Integration:** OpenAI API for chatbot and report generation
-- **Data Handling:** Session-based temporary storage with automatic deletion after analysis completion
+## Usage
 
-### Deployment
-- **Web Server:** PythonAnywhere for Flask frontend
-- **Application Server:** shinyapps.io for R Shiny backend
-- **Domain:** Custom domain with SSL/TLS encryption
+### Data Input
 
----
+Meta-Mar accepts CSV files or manual data entry for:
+
+| Data Type | Required Columns |
+|-----------|------------------|
+| Continuous | `study`, `n.e`, `mean.e`, `sd.e`, `n.c`, `mean.c`, `sd.c` |
+| Binary | `study`, `event.e`, `n.e`, `event.c`, `n.c` |
+| Correlation | `study`, `cor`, `n` |
+| Pre-calculated | `study`, `TE`, `seTE` |
+
+### Example
+
+```r
+# Example continuous outcome data structure
+data <- data.frame(
+  study = c("Study A", "Study B", "Study C"),
+  n.e = c(50, 75, 60),
+  mean.e = c(12.5, 13.2, 11.8),
+  sd.e = c(3.2, 2.9, 3.5),
+  n.c = c(48, 72, 58),
+  mean.c = c(10.1, 10.8, 9.9),
+  sd.c = c(3.0, 3.1, 3.3)
+)
+```
+
+## Statistical Methods
+
+### Effect Size Measures
+
+- **Continuous:** Standardized Mean Difference (SMD), Mean Difference (MD), Ratio of Means
+- **Binary:** Odds Ratio (OR), Risk Ratio (RR), Risk Difference (RD)
+- **Correlation:** Fisher's z transformation
+
+### Heterogeneity Estimators
+
+REML, DerSimonian-Laird, Paule-Mandel, Maximum Likelihood, Empirical Bayes, Sidik-Jonkman, Hedges, Hunter-Schmidt
+
+### Confidence Interval Methods
+
+Classic (Wald), Hartung-Knapp-Sidik-Jonkman (HKSJ), Kenward-Roger
+
+### Publication Bias
+
+- Funnel plot visualization
+- Egger's regression test
+- Begg's rank correlation test
+- Trim-and-fill adjustment
+- Fail-safe N (Rosenthal, Orwin, Rosenberg)
 
 ## Project Structure
 
 ```
-metamar_web/
-├── python_side/
-│   ├── app.py                          # Flask application
-│   ├── templates/
-│   │   ├── metamar.html                # Landing page
-│   │   ├── documentation_frame.html    # Documentation viewer
-│   │   ├── support_content.html        # Support and survey
-│   │   └── survey_results.html         # Survey statistics
-│   ├── survey_responses.csv            # Survey data storage
-│   └── .env                            # Environment variables
-│
-├── R_Side/
-│   └── metamar0.4.0.2/
-│       ├── app.R                       # Shiny UI and server
-│       ├── global.R                    # Global functions and settings
-│       ├── user_summary.R              # Session management
-│       └── documentation_MetaMar.R     # Documentation content
-│
+meta-mar/
+├── app.R              # Shiny UI and server logic
+├── global.R           # Global functions, settings, demo data
+├── user_summary.R     # Session management utilities
+├── data/
+│   └── statistics.json
+├── paper.md           # JOSS paper
+├── paper.bib          # References
+├── LICENSE            # MIT License
 └── README.md
 ```
 
----
+## Core Dependencies
 
-## Data Privacy
+Meta-Mar builds on established R packages for meta-analysis:
 
-Meta-Mar implements strict data privacy measures:
+- **metafor** (Viechtbauer, 2010): Core meta-analytic computations
+- **meta** (Balduzzi et al., 2019): Additional methods and visualizations
+- **shiny** (Chang et al., 2024): Web application framework
 
-- **User Data:** All uploaded data stored temporarily in session memory only
-- **Automatic Deletion:** Data automatically deleted when browser session ends
-- **No Persistent Storage:** No user data retained on servers
-- **AI Interactions:** Chat conversations not stored permanently
-- **Analytics:** Google Analytics tracks usage patterns only, not user data
+## Validation
 
-See Privacy Policy at [https://www.meta-mar.com](https://www.meta-mar.com) for complete details.
+Computational accuracy has been validated against Cochrane RevMan 5.4. See the accompanying paper for detailed comparison results.
 
----
+## Privacy
 
-## Development Priorities Survey
+- No user registration required
+- Uploaded data stored in session memory only
+- Automatic deletion when session ends
+- No persistent storage of user data
+- AI interactions not permanently stored
 
-The platform includes a public survey system for gathering user feedback on development priorities:
-
-- **Survey Submission:** Available in Support tab
-- **Data Storage:** CSV file (`survey_responses.csv`) with append-only writes
-- **Public Results:** Accessible at `/survey-results` with real-time statistics
-- **Persistence:** Survey data survives deployments and server restarts
-
----
+Full privacy policy: [https://www.meta-mar.com/privacy](https://www.meta-mar.com)
 
 ## Citation
 
 If you use Meta-Mar in your research, please cite:
 
+```bibtex
+@software{beheshti2026metamar,
+  author = {Beheshti, Ashkan and Chavanon, Mira-Lynn and Albrecht, Björn and Christiansen, Hanna},
+  title = {Meta-Mar: An AI-Integrated Web Platform for Meta-Analysis},
+  year = {2026},
+  url = {https://github.com/mirzafarangi/meta-mar},
+  version = {4.0.2}
+}
 ```
-Beheshti, A., Chavanon, M. L., & Christiansen, H. (2020). 
-Emotion dysregulation in adults with attention deficit hyperactivity disorder: 
-a meta-analysis. BMC psychiatry, 20, 1-11.
-https://www.meta-mar.com
-```
-The Metar-Mar's article itself is underreview. New citation will be thus informed.
----
 
 ## Contributing
 
-Contributions are welcome. Please ensure all changes maintain the platform's academic style and minimal design principles.
+Contributions welcome. Please:
 
-### Code Style
-- Python: PEP 8 compliance
-- R: Tidyverse style guide
-- HTML/CSS: Consistent with existing templates
-- No emoji or decorative elements in user-facing text
-
-### Testing
-- Test all statistical functions with known datasets
-- Verify AI integration functionality
-- Check cross-browser compatibility
-- Validate responsive design
-
----
+1. Fork the repository
+2. Create a feature branch
+3. Follow R tidyverse style guide
+4. Test with known datasets
+5. Submit pull request
 
 ## License
 
-Meta-Mar is provided free for research and educational purposes.
+MIT License. See [LICENSE](LICENSE) for details.
 
----
+## Contact
 
-## Support
+- **Website:** [https://www.meta-mar.com](https://www.meta-mar.com)
+- **Issues:** [GitHub Issues](https://github.com/mirzafarangi/meta-mar/issues)
+- **Author:** Ashkan Beheshti, Philipps-Universität Marburg
 
-For technical issues or questions:
-- Visit the Support tab at [https://www.meta-mar.com](https://www.meta-mar.com)
-- Review documentation in the Documentation tab
-- Check example datasets in Resources section
+## Acknowledgments
 
----
-
-## Version History
-
-**2025 Update:**
-- Enhanced AI integration with improved chatbot functionality
-- AI-powered report generation
-- Expanded statistical methods and estimators
-- Improved visualization customization
-- Survey system for development priorities
-- Updated privacy policy and cookie consent
-
----
-
-**Last Updated:** November 2025
+Development supported by Philipps-Universität Marburg, Department of Psychology.

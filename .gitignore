@@ -44,3 +44,13 @@ Thumbs.db
 global_secret.R
 user_summary_secret.R
 documentation_MetaMar_full.R
+
+# Local development files (not for public repo)
+ACTIVITY.md
+test_meta.sh
+analysis/
+*.sh
+
+# JOSS submission drafts (keep paper.md and paper.bib, exclude drafts)
+paper_draft.md
+*.draft.md
