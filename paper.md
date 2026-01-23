@@ -5,8 +5,9 @@ tags:
   - Shiny
   - meta-analysis
   - systematic review
-  - research synthesis
+  - evidence synthesis
   - AI assistant
+  - GPT-4
 authors:
   - name: Ashkan Beheshti
     orcid: 0000-0002-6377-0710
@@ -30,51 +31,77 @@ bibliography: paper.bib
 
 # Summary
 
-Meta-Mar is a free, web-based meta-analysis platform built with R Shiny that enables researchers to conduct comprehensive meta-analyses without programming knowledge or software installation. The platform uniquely integrates an AI assistant powered by GPT-4 to provide context-aware methodological guidance and result interpretation. Available at https://www.meta-mar.com, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 200+ peer-reviewed publications since its launch in 2020 [@Beheshti2020].
+Meta-analysis is a cornerstone methodology in evidence-based research, enabling systematic synthesis of findings across multiple studies to produce more reliable and generalizable conclusions [@Borenstein2021; @Gurevitch2018]. Yet despite its central importance, existing tools for conducting meta-analyses remain fragmented—often technically demanding, costly, or lacking transparency—creating barriers for early-career researchers, educators, and interdisciplinary teams [@Harrer2021].
+
+Meta-Mar addresses this challenge as a free, browser-based meta-analysis platform that combines statistical rigor with accessibility. Built with R Shiny and powered by the `metafor` [@Viechtbauer2010] and `meta` [@Balduzzi2019] packages, Meta-Mar v4.0.2 performs fixed-effect and random-effects meta-analyses across continuous, binary, correlation, and generic inverse-variance data structures. The platform integrates advanced heterogeneity diagnostics, publication bias assessments, and publication-quality visualizations within a guided, stepwise interface. Uniquely, Meta-Mar incorporates a large language model (LLM) assistant via GPT-4 that provides contextual guidance for model selection, data validation, and result interpretation—bridging the gap between statistical complexity and practical usability.
+
+Available at https://www.meta-mar.com, Meta-Mar has been used by over 5,800 researchers across 120+ countries and cited in 200+ peer-reviewed publications since its initial release in 2020 [@Beheshti2020].
 
 # Statement of Need
 
-Meta-analysis is essential for evidence synthesis across scientific disciplines [@Gurevitch2018], yet existing tools present significant barriers to researchers. Commercial software such as Comprehensive Meta-Analysis requires expensive licenses. Open-source alternatives like the R packages `metafor` [@Viechtbauer2010] and `meta` [@Balduzzi2019] require programming expertise. Existing web-based tools often lack comprehensive statistical options or provide limited methodological guidance for users unfamiliar with meta-analytic procedures.
+The current landscape of meta-analysis software presents a fundamental tension between methodological sophistication and day-to-day usability [@Fisher2022; @Harrer2021]. Commercial platforms such as Comprehensive Meta-Analysis (CMA) and Cochrane's RevMan offer comprehensive functionality but operate under subscription-based models (approximately €65–95 annually for students), creating financial barriers particularly for researchers in resource-limited settings. Open-source alternatives like the R packages `metafor` and `meta` provide robust analytical frameworks but require programming expertise that many researchers—especially those in applied fields such as health, education, and behavioral sciences—may lack.
 
-Meta-Mar addresses this gap by providing:
+Existing web-based tools have attempted to bridge this gap, but typically sacrifice either statistical comprehensiveness or methodological guidance. Platforms like metaHUN [@Umaroglu2018] provide web-based access to `metafor` functionality but lack features such as customizable pooling methods, prediction intervals, and interactive tutorials. Desktop applications like JASP [@Bartos2025] require installation, which can pose barriers in institutional computing environments.
 
-- **Accessibility:** Browser-based interface requiring no installation, registration, or payment
-- **Comprehensive statistics:** Support for continuous, binary, and correlation outcomes with multiple effect size measures
-- **Multiple estimators:** Eight heterogeneity variance estimators (REML, DL, PM, ML, EB, SJ, HE, HS) and small-sample corrections (Hartung-Knapp, Kenward-Roger)
-- **Publication bias tools:** Funnel plots, Egger's test [@Egger1997], Begg's test, trim-and-fill [@DuvalTweedie2000], and fail-safe N methods
-- **AI-powered guidance:** Context-aware interpretation and methodological recommendations
-- **Privacy-focused design:** No data retention; all uploads deleted after session ends [@Gilbert2025]
+Meta-Mar addresses these limitations by providing:
 
-# Functionality
+- **Zero-barrier accessibility:** Browser-based interface requiring no installation, registration, or payment
+- **Comprehensive statistical coverage:** Support for continuous, binary, and correlation outcomes with multiple effect size measures (SMD, MD, OR, RR, RD, Fisher's z)
+- **Methodological flexibility:** Eight heterogeneity variance estimators (REML, DL, PM, ML, EB, SJ, HE, HS) with small-sample corrections (Hartung-Knapp, Kenward-Roger)
+- **Publication bias diagnostics:** Funnel plots, Egger's regression [@Egger1997], Begg's rank correlation, trim-and-fill adjustment [@DuvalTweedie2000], and fail-safe N calculations (Rosenthal, Orwin, Rosenberg)
+- **AI-powered guidance:** Context-aware interpretation and methodological recommendations that serve as a dynamic tutor for users unfamiliar with meta-analytic conventions
+- **Privacy-by-design:** GDPR-aligned data handling with no persistent storage; all uploads deleted after session ends
 
-Meta-Mar supports the complete meta-analysis workflow through an interactive web interface:
+# Statistical Architecture
 
-1. **Data input:** CSV upload or manual entry for continuous outcomes, binary outcomes, correlations, or pre-calculated effect sizes (generic inverse variance)
-2. **Model specification:** Fixed-effect or random-effects models with user-selected heterogeneity estimators and confidence interval methods
-3. **Effect size calculation:** Automatic computation of standardized mean difference (SMD), mean difference (MD), odds ratio (OR), risk ratio (RR), risk difference (RD), or correlation coefficients with Fisher's z transformation
-4. **Heterogeneity assessment:** Q-statistic, I², τ², H², and prediction intervals [@Higgins2003; @Holzmeister2024]
-5. **Publication bias analysis:** Visual assessment via funnel plots, statistical tests (Egger's regression, Begg's rank correlation), adjustment methods (trim-and-fill), and sensitivity analysis (Rosenthal, Orwin, and Rosenberg fail-safe N)
-6. **Moderator analysis:** Subgroup analysis for categorical moderators and meta-regression for continuous moderators
-7. **Visualization:** Forest plots, funnel plots, bubble plots, Baujat plots, drapery plots, and radial plots
-8. **AI interpretation:** GPT-4-powered assistant providing methodological guidance and result interpretation
+Meta-Mar implements the complete meta-analysis workflow through a modular architecture:
 
-The statistical engine is built on the `metafor` [@Viechtbauer2010] and `meta` [@Balduzzi2019] R packages, ensuring computational accuracy. Validation against Cochrane RevMan 5.4 confirms agreement to four decimal places for effect estimates, confidence intervals, and heterogeneity statistics.
+**Data Input and Effect Size Calculation.** The platform accepts CSV uploads or manual entry for four data structures: continuous outcomes (computing SMD, MD, or ratio of means), binary outcomes (OR, RR, RD with zero-event handling), correlations (Fisher's z transformation), and pre-calculated effect sizes (generic inverse variance). Input validation ensures data integrity before analysis.
+
+**Model Specification.** Users select between fixed-effect models using inverse-variance weighting and random-effects models with user-specified τ² estimators. Confidence interval methods include classic Wald intervals, Hartung-Knapp-Sidik-Jonkman (HKSJ), and Kenward-Roger corrections for improved small-sample performance.
+
+**Heterogeneity Assessment.** The platform computes Cochran's Q statistic, I², τ², H², and prediction intervals [@Higgins2003], enabling researchers to distinguish between true between-study heterogeneity and sampling variation.
+
+**Publication Bias Analysis.** Visual assessment via funnel plots (including contour-enhanced variants) is complemented by Egger's regression test for small-study effects, Begg's rank correlation, trim-and-fill adjustment for estimating missing studies, and three fail-safe N methods for quantifying robustness.
+
+**Moderator Analysis.** Subgroup analysis supports categorical moderators with between-group heterogeneity testing, while meta-regression accommodates continuous and categorical covariates with bubble plot visualization.
+
+**Visualization.** Publication-quality outputs include forest plots (with subgroup comparisons), funnel plots, Galbraith (radial) plots, L'Abbé plots for binary outcomes, Baujat plots for identifying influential studies, and drapery plots for p-value functions.
+
+**Validation.** Computational accuracy was validated against Cochrane RevMan 5.4, demonstrating agreement to four decimal places for effect size estimates, standard errors, confidence intervals, and study weights across standardized mean difference models.
 
 # AI Integration
 
-Meta-Mar integrates OpenAI's GPT-4 API as an optional AI assistant that provides:
+Meta-Mar integrates OpenAI's GPT-4 API through LangChain to provide an optional AI assistant that enhances interpretability without modifying statistical computations. The assistant supports users with:
 
-- Interpretation of effect sizes and confidence intervals in context
-- Explanation of heterogeneity statistics and their implications
-- Guidance on model selection and analytical decisions
-- Publication bias interpretation and recommendations
+- Contextual interpretation of effect sizes, confidence intervals, and heterogeneity statistics
+- Guidance on model selection based on data characteristics and research questions
+- Explanation of publication bias diagnostics and their implications
+- Interactive methodological tutoring for users new to meta-analysis
 
-The AI assistant is designed to support, not replace, researcher judgment. All AI outputs are clearly labeled, and users retain full control over analytical decisions.
+The integration employs conversation memory to maintain context across multi-turn interactions, custom prompt templates tailored to meta-analytic workflows, and error handling for invalid inputs or API timeouts. Critically, the AI assistant is designed to support—not replace—researcher judgment. All AI outputs are clearly labeled, statistical computations remain deterministic and reproducible, and users retain full control over analytical decisions.
 
-**AI Usage Disclosure:** The AI assistant is an optional feature. During development, AI tools (GitHub Copilot, Claude) assisted with code development; all outputs were reviewed and validated by the authors. Core statistical implementations rely entirely on the peer-reviewed `metafor` and `meta` R packages.
+**AI Usage Disclosure:** The AI assistant is an optional feature that users may enable or disable. During platform development, AI coding assistants (GitHub Copilot, Claude) were used to accelerate development; all generated code was reviewed and validated by the authors. Core statistical implementations rely entirely on the peer-reviewed `metafor` and `meta` R packages without AI modification.
+
+# Privacy and Governance
+
+Meta-Mar implements privacy-by-design principles aligned with GDPR requirements:
+
+- No user registration required
+- Uploaded data stored in session memory only
+- Automatic deletion when session ends
+- Automated anonymization of free-text inputs before AI processing
+- TLS 1.3 encryption for all data transmission
+- No persistent storage of user data or AI interactions
+
+These safeguards ensure responsible deployment in academic and educational environments where data sensitivity is paramount.
+
+# Target Audience
+
+Meta-Mar serves two complementary user groups: (1) researchers without programming expertise who require accessible tools for conducting methodologically sound meta-analyses, and (2) technically trained users who may lack formal training in meta-analytic methodology and benefit from AI-driven guidance on model selection and interpretation. The platform has been adopted in graduate-level meta-analysis courses, including PhD programs at Semmelweis University, demonstrating its utility as both a research and pedagogical tool.
 
 # Acknowledgements
 
-Development of Meta-Mar was supported by Philipps-Universität Marburg, Department of Psychology. We thank the research community for feedback and feature suggestions that have shaped the platform's development.
+Development of Meta-Mar was supported by Philipps-Universität Marburg, Department of Psychology. We thank the research community for feedback and feature suggestions that have shaped the platform's evolution since 2020.
 
 # References
